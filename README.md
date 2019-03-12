@@ -34,7 +34,7 @@ _Note: i forgot on how to discover your telegram profile ID. maybe google can an
 -----------------------------
 # Dependency Installations:
 
-`$ pip install BeautifulSoup os sys commands argparse`
+`$ pip install BeautifulSoup os sys commands argparse base64`
 
 -----------------------------
 
