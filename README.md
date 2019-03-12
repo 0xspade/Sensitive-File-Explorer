@@ -26,6 +26,8 @@ _Note: just create your own telegram bot first_
 * it will ask a bot name
 * Next, it will ask for bot username
 * after setting up bot name and username. BotFather will give you the api token of your bot and make sure to read the message carefully.
+* Go to sensitive.py file, line `47` and paste the api token
+* In line `48` just find a way on how to discover your own telegram id.
 
 _Note: i forgot on how to discover your telegram profile ID. maybe google can answer that :)_
 
