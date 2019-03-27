@@ -23,7 +23,7 @@ def code(url):
 def false_positive(url):
         response = requests.get(url)
         try:
-                if len(response.content) == 0:
+                if length(url) == 0:
                         return False
                 else:
                         errors = ["Not Found", "not found", "error", "Error"]
@@ -33,6 +33,10 @@ def false_positive(url):
                                 return True
         except ConnectionError:
                 return False
+
+def length(content):
+    response = requests.get(content)
+    return response.headers['Content-Length']
 
 def get_title(content):
     soup = BeautifulSoup(content, "lxml")
@@ -108,11 +112,11 @@ if __name__ == '__main__':
                                             l = commands.getoutput('curl -I -L '+str(test+"/"+file)+' --silent | grep -Fi Location')
                                             if c == '200':
                                                     if false_positive(test+"/"+file) == True:
-                                                            print bc.BOLD+'['+str(c)+'] '+str(test+"/"+file)+' :: '+get_title(r)+bc.ENDC
-                                                            bot("[FOUND] "+str(test+"/"+file)+' :: '+get_title(r))
-                                                            logfile.write('['+str(c)+'] '+str(test+"/"+file)+' :: '+get_title(r)+"\n")
+                                                            print bc.BOLD+'['+str(c)+'] '+str(test+"/"+file)+' :: '+get_title(r)+' | Length: '+str(length(test+"/"+file))+bc.ENDC
+                                                            bot("[FOUND] "+str(test+"/"+file)+' :: '+get_title(r)+' | Length: '+str(length(test+"/"+file)))
+                                                            logfile.write('['+str(c)+'] '+str(test+"/"+file)+' :: '+get_title(r)+" | Length: "+str(length(test+"/"+file))+"\n")
                                                     else:
-                                                            print bc.FAIL+'['+str(c)+'] False Positive:: '+str(test+"/"+file)+' :: '+get_title(r)+bc.ENDC
+                                                            print bc.FAIL+'['+str(c)+'] False Positive:: '+str(test+"/"+file)+' :: '+get_title(r)+' | Length: '+str(length(test+"/"+file))+bc.ENDC
                                             elif c == '301' or c == '302':
                                                     print bc.HEADER+'['+str(c)+'] '+str(test+"/"+file)+'\n--- Redirect ---\n'+str(l)+'\n'+get_title(r)+'\n----------------\n'+bc.ENDC
                                                     logfile.write('['+str(c)+'] '+str(test+"/"+file)+'\n--- Redirect ---\n'+str(l)+'\n'+get_title(r)+'\n----------------\n\n')
@@ -120,8 +124,8 @@ if __name__ == '__main__':
                                                     print bc.WARNING+'['+str(c)+'] '+str(test+"/"+file)+' :: Certificate Error: Insecure Connection!' +bc.ENDC
                                                     logfile.write('['+str(c)+'] '+str(test+"/"+file)+' :: Certificate Error: Insecure Connection!\n')
                                             else:
-                                                    print bc.OKBLUE+'['+str(c)+'] '+str(test+"/"+file)+' :: '+get_title(r) +bc.ENDC
-                                                    logfile.write('['+str(c)+'] '+str(test+"/"+file)+' :: '+get_title(r)+'\n')
+                                                    print bc.OKBLUE+'['+str(c)+'] '+str(test+"/"+file)+' :: '+get_title(r)+' | Length: '+str(length(test+"/"+file)) +bc.ENDC
+                                                    logfile.write('['+str(c)+'] '+str(test+"/"+file)+' :: '+get_title(r)+' | Length: '+str(length(test+"/"+file))+'\n')
                                         print "------------------------------------------\r\n"
                             except ConnectionError:
                                 continue
