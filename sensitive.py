@@ -36,7 +36,10 @@ def false_positive(url):
 
 def length(content):
     response = requests.get(content)
-    return response.headers['Content-Length']
+    if 'Content-Length' in response.headers:
+        return response.headers['Content-Length']
+    else:
+        return len(response.text)
 
 def get_title(content):
     soup = BeautifulSoup(content, "lxml")
