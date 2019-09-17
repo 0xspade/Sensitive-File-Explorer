@@ -1,5 +1,7 @@
 # Sensitive-File-Explorer
 
+**WILL UPDATE THE SCRIPT AND MIGRATE TO PYTHON3 :)**
+
 Upload this script in your VPS or server and run it in background
 
 `$ nohup python sensitive.py -u domain_list.txt &`
