@@ -101,7 +101,7 @@ if __name__ == '__main__':
                                                     print bc.FAIL+"Not a File"+bc.ENDC
                                                     exit(2)
                                         else:
-                                            files = [".gitignore",".svn/wc.db",".git/config", "phpmyadmin/", ".travis.yml",".DS_Store",".htaccess",".htpasswd","Makefile","Dockerfile","package.json","gulpfile.js","composer.json","web.config",".env",".idea","nbproject/","bower.json","package-lock.json",".gitlab-ci.yml","database.yml"]
+                                            files = [".vscode","config.yaml",".gitignore",".svn/wc.db",".git/config", "phpmyadmin/", ".travis.yml",".DS_Store",".htaccess",".htpasswd","Makefile","Dockerfile","package.json","gulpfile.js","composer.json","web.config",".env",".idea","nbproject/","bower.json","package-lock.json",".gitlab-ci.yml","database.yml"]
                                         for filex in files:
                                             filey = filex.split()
                                             file = str(filey[0])
